@@ -1,8 +1,91 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import { gapi } from "gapi-script";
 
+const CLIENT_ID = "580229356912-afahd3oirmihpgiea04ounvqedmp6akb.apps.googleusercontent.com";
+const API_KEY = "AIzaSyCuMMmZJ9X6gRdUC0t5LxTeYK1Ab2ahteY";
+const SPREADSHEET_ID = "1MwjwC_LcnDQaCEmJGg3GjoSeiWXwvyG7evrRfpDHQj0";
 
 function FormDK() {
+    const [data, setData] = useState({
+        Name: "",
+        Email: "",
+        PhoneNumber: "",
+        TypeStudent: "",
+        Specialized: "",
+    });
+
+    useEffect(() => {
+        function start() {
+            gapi.client
+                .init({
+                    apiKey: API_KEY,
+                    clientId: CLIENT_ID,
+                    discoveryDocs: [
+                        "https://sheets.googleapis.com/$discovery/rest?version=v4",
+                    ],
+                    scope:
+                        "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/spreadsheets",
+                })
+                .then(
+                    () => {
+                        console.log("GAPI client loaded for API");
+                    },
+                    (error) => {
+                        console.error("Error loading GAPI client for API", error);
+                    }
+                );
+        }
+
+        gapi.load("client:auth2", start);
+    }, []);
+
+    const handleChange = (e) => {
+        e.preventDefault();
+        setData({ ...data, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await authenticate();
+    };
+
+    const authenticate = async () => {
+        gapi.auth2
+            .getAuthInstance()
+            .signIn()
+            .then(
+                () => {
+                    console.log("Sign-in successful");
+                    execute();
+                },
+                (error) => {
+                    console.error("Error signing in", error);
+                }
+            );
+    };
+
+    const execute = () => {
+        const spreedData = Object.values(data);
+        console.log(spreedData);
+        gapi.client.sheets.spreadsheets.values
+            .append({
+                spreadsheetId: SPREADSHEET_ID,
+                range: "A1",
+                insertDataOption: "INSERT_ROWS",
+                valueInputOption: "USER_ENTERED",
+                resource: {
+                    values: [spreedData],
+                },
+            })
+            .then(
+                (response) => {
+                    console.log("Response", response);
+                },
+                (error) => {
+                    console.error("Execute error", error);
+                }
+            );
+    };
     return (
         <div>
             <div className="container-fluid bg-registration py-5" style={{ margin: '90px 0' }}>
@@ -22,34 +105,49 @@ function FormDK() {
                                     <h1 className="m-0">Ứng Tuyển Ngay</h1>
                                 </div>
                                 <div className="card-body rounded-bottom bg-primary p-5">
-                                    <form>
+                                    <form onSubmit={handleSubmit}>
                                         <div className="form-group">
                                             <input
                                                 type="text"
+                                                name="Name"
                                                 className="form-control border-0 p-4"
                                                 placeholder="Họ và Tên"
                                                 required="required"
+                                                value={data.Name}
+                                                onChange={handleChange}
                                             />
                                         </div>
                                         <div className="form-group">
                                             <input
                                                 type="email"
+                                                name="Email"
                                                 className="form-control border-0 p-4"
                                                 placeholder="Email"
                                                 required="required"
+                                                value={data.Email}
+                                                onChange={handleChange}
                                             />
                                         </div>
                                         <div className="form-group">
                                             <input
                                                 type="tel"
+                                                name="PhoneNumber"
                                                 className="form-control border-0 p-4"
                                                 placeholder="Số điện thoại"
                                                 required="required"
+                                                value={data.PhoneNumber}
+                                                onChange={handleChange}
                                             />
                                         </div>
                                         <div className="form-group">
-                                            <select className="custom-select border-0 px-4" style={{ height: '47px' }}>
-                                                <option selected>Bạn là?</option>
+                                            <select
+                                                name="TypeStudent"
+                                                className="custom-select border-0 px-4"
+                                                style={{ height: "47px" }}
+                                                value={data.TypeStudent}
+                                                onChange={handleChange}
+                                            >
+                                                <option value="">Bạn là?</option>
                                                 <option value="Hs12">Học sinh lớp 12(đăng kí giữ chỗ)</option>
                                                 <option value="DaTotNghiepC3">Học sinh đã tốt nghiệp THPT/lớp 12</option>
                                                 <option value="SinhVien">Sinh viên</option>
@@ -57,8 +155,14 @@ function FormDK() {
                                             </select>
                                         </div>
                                         <div className="form-group">
-                                            <select className="custom-select border-0 px-4" style={{ height: '47px' }}>
-                                                <option selected>Chương trình học</option>
+                                            <select
+                                                name="Specialized"
+                                                className="custom-select border-0 px-4"
+                                                style={{ height: "47px" }}
+                                                value={data.Specialized}
+                                                onChange={handleChange}
+                                            >
+                                                <option value="">Chương trình học</option>
                                                 <option value="ANM">An ninh mạng</option>
                                                 <option value="LTW">Phát triển phần mềm</option>
                                                 <option value="TKDH">Thiết kế đồ họa</option>
@@ -69,7 +173,9 @@ function FormDK() {
                                             </select>
                                         </div>
                                         <div>
-                                            <button className="btn btn-dark btn-block border-0 py-3" type="submit" value="Submit">Gửi</button>
+                                            <button className="btn btn-dark btn-block border-0 py-3" type="submit" value="Submit">
+                                                Gửi
+                                            </button>
                                         </div>
                                     </form>
                                 </div>

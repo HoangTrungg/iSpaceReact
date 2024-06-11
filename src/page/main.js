@@ -1,6 +1,5 @@
 import FormDK from '../component/formDK';
 import {Link } from 'react-router-dom';
-import Test from '../component/test';
 
 function Main() {
     
