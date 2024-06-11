@@ -5,7 +5,7 @@ const CLIENT_ID = "580229356912-afahd3oirmihpgiea04ounvqedmp6akb.apps.googleuser
 const API_KEY = "AIzaSyCuMMmZJ9X6gRdUC0t5LxTeYK1Ab2ahteY";
 const SPREADSHEET_ID = "1MwjwC_LcnDQaCEmJGg3GjoSeiWXwvyG7evrRfpDHQj0";
 
-function FormDK() {
+function DKweb() {
     const [data, setData] = useState({
         Name: "",
         Email: "",
@@ -156,4 +156,4 @@ function FormDK() {
     )
 }
 
-export default DK;
+export default DKweb;
