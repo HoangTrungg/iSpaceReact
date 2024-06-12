@@ -27,7 +27,7 @@ function NH() {
                     <div class="row">
                         <div class="col-lg-3 col-md-6 mb-4">
                             <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                                <img class="img-fluid" src="./img/ANM.jpg" alt="" style={{ width: "200px" }} />
+                                <img class="img-fluid" src="./img/ANM.jpg" alt="" style={{ width: "300px" , height: "150px"}} />
                                 <a class="cat-overlay text-white text-decoration-none" href="">
                                     <h4 class="text-white font-weight-medium">An ninh mạng</h4>
                                     <Link to="/ANM" class="text-primary">ĐĂNG KÍ NGAY</Link>
@@ -36,7 +36,7 @@ function NH() {
                         </div>
                         <div class="col-lg-3 col-md-6 mb-4">
                             <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                                <img class="img-fluid" src="./img/PTPM.jpg" alt="" style={{ width: "200px" }} />
+                                <img class="img-fluid" src="./img/PTPM.jpg" alt="" style={{ width: "300px" , height: "150px"}} />
                                 <a class="cat-overlay text-white text-decoration-none" href="">
                                     <h4 class="text-white font-weight-medium">Phát triển phần mềm</h4>
                                     <Link to="/LTW" class="text-primary">ĐĂNG KÍ NGAY</Link>
@@ -45,7 +45,7 @@ function NH() {
                         </div>
                         <div class="col-lg-3 col-md-6 mb-4">
                             <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                                <img class="img-fluid" src="./img/TKDH.jpg" alt="" style={{ width: "200px" }} />
+                                <img class="img-fluid" src="./img/TKDH.jpg" alt="" style={{ width: "300px" , height: "150px"}} />
                                 <a class="cat-overlay text-white text-decoration-none" href="">
                                     <h4 class="text-white font-weight-medium">Thiết kế đồ họa</h4>
                                     <Link to="/TKDH" class="text-primary">ĐĂNG KÍ NGAY</Link>
@@ -54,7 +54,7 @@ function NH() {
                         </div>
                         <div class="col-lg-3 col-md-6 mb-4">
                             <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                                <img class="img-fluid" src="./img/QTM.jpg" alt="" style={{ width: "200px" }} />
+                                <img class="img-fluid" src="./img/QTM.jpg" alt="" style={{ width: "300px" , height: "150px"}} />
                                 <a class="cat-overlay text-white text-decoration-none" href="">
                                     <h4 class="text-white font-weight-medium">Quảng trị mạng</h4>
                                     <Link to="/NH" class="text-primary">ĐĂNG KÍ NGAY</Link>
@@ -63,7 +63,7 @@ function NH() {
                         </div>
                         <div class="col-lg-3 col-md-6 mb-4">
                             <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                                <img class="img-fluid" src="./img/TMDT.jpg" alt="" style={{ width: "200px" }} />
+                                <img class="img-fluid" src="./img/TMDT.jpg" alt="" style={{ width: "300px" , height: "150px"}} />
                                 <a class="cat-overlay text-white text-decoration-none" href="">
                                     <h4 class="text-white font-weight-medium">Thương mại điện tử</h4>
                                     <Link to="/NH" class="text-primary">ĐĂNG KÍ NGAY</Link>
@@ -72,7 +72,7 @@ function NH() {
                         </div>
                         <div class="col-lg-3 col-md-6 mb-4">
                             <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                                <img class="img-fluid" src="./img/CEHweb.jpg" alt="" style={{ width: "175px" }} />
+                                <img class="img-fluid" src="./img/CEHweb.jpg" alt="" style={{ width: "300px" , height: "150px"}} />
                                 <a class="cat-overlay text-white text-decoration-none" href="">
                                     <h4 class="text-white font-weight-medium">KHÓA HỌC CEH (V12)</h4>
                                     <Link to="/CEH" class="text-primary">ĐĂNG KÍ NGAY</Link>
@@ -81,7 +81,7 @@ function NH() {
                         </div>
                         <div class="col-lg-3 col-md-6 mb-4">
                             <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                                <img class="img-fluid" src="./img/AWSmain.jpg" alt="" style={{ width: "200px" }} />
+                                <img class="img-fluid" src="./img/AWSmain.jpg" alt="" style={{ width: "300px" , height: "150px"}} />
                                 <a class="cat-overlay text-white text-decoration-none" href="">
                                     <h4 class="text-white font-weight-medium">KHÓA HỌC AWS</h4>
                                     <Link to="/AWS" class="text-primary">ĐĂNG KÍ NGAY</Link>

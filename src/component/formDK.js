@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { gapi } from "gapi-script";
+import swal from 'sweetalert';
 
 const CLIENT_ID = "580229356912-afahd3oirmihpgiea04ounvqedmp6akb.apps.googleusercontent.com";
 const API_KEY = "AIzaSyCuMMmZJ9X6gRdUC0t5LxTeYK1Ab2ahteY";
@@ -46,7 +47,11 @@ function FormDK() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const currentDate = new Date();
+        const formattedDate = `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`;
+        const newData = { ...data, Date: formattedDate };
         await authenticate();
+        await execute(newData);
     };
 
     const authenticate = async () => {
@@ -56,7 +61,6 @@ function FormDK() {
             .then(
                 () => {
                     console.log("Sign-in successful");
-                    execute();
                 },
                 (error) => {
                     console.error("Error signing in", error);
@@ -64,8 +68,8 @@ function FormDK() {
             );
     };
 
-    const execute = () => {
-        const spreedData = Object.values(data);
+    const execute = (newData) => {
+        const spreedData = Object.values(newData);
         console.log(spreedData);
         gapi.client.sheets.spreadsheets.values
             .append({
@@ -80,12 +84,19 @@ function FormDK() {
             .then(
                 (response) => {
                     console.log("Response", response);
+                    if (response.status === 200) {
+                        swal("Đã Gửi", "Chúng tôi sẽ phản hồi bạn sớm nhất có thể", "success");
+                    } else {
+                        swal("Đã Gửi", "Chúng tôi sẽ phản hồi bạn sớm nhất có thể", "error");
+                    }
                 },
                 (error) => {
                     console.error("Execute error", error);
+                    swal("Đã Gửi", "Chúng tôi sẽ phản hồi bạn sớm nhất có thể", "error");
                 }
             );
     };
+
     return (
         <div>
             <div className="container-fluid bg-registration py-5" style={{ margin: '90px 0' }}>
@@ -99,12 +110,12 @@ function FormDK() {
                             <p className="text-white">09 iPhone 15 Pro dành tặng cho 09 bạn có điểm cao nhất mỗi đợt xét tuyển</p>
                             <img className="img-fluid" style={{ width: '500px' }} src="./img/DANGKI.jpg" alt='' />
                         </div>
-                        <div className="col-lg-5">
-                            <div className="card border-0">
+                        <div className="col-lg-5" >
+                            <div className="card border-0 bg-white">
                                 <div className="card-header bg-light text-center p-4">
                                     <h1 className="m-0">Ứng Tuyển Ngay</h1>
                                 </div>
-                                <div className="card-body rounded-bottom bg-primary p-5">
+                                <div className="card-body rounded-top rounded-bottom bg-primary p-5">
                                     <form onSubmit={handleSubmit}>
                                         <div className="form-group">
                                             <input
@@ -189,3 +200,4 @@ function FormDK() {
 }
 
 export default FormDK;
+

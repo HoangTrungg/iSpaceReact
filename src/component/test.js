@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { CLIENT_ID, API_KEY, DISCOVERY_DOC, SCOPES } from "./config";
 import { gapi } from "gapi-script";
 const CLIENT_ID = "580229356912-r6rmhebfntvfkdrqm92kccaan3av4s5r.apps.googleusercontent.com";
 const API_KEY = "AIzaSyCuMMmZJ9X6gRdUC0t5LxTeYK1Ab2ahteY";

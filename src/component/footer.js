@@ -1,8 +1,8 @@
 
 function Footer() {
-    return (
-        <div>
-            <div className="container-fluid bg-dark text-white py-5 px-sm-3 px-lg-5" style={{ margintop: '90px' }}>
+  return (
+    <div>
+      <div className="container-fluid bg-dark text-white py-5 px-sm-3 px-lg-5" style={{ margintop: '90px' }}>
         <div className="row pt-5">
           <div className="col-lg-7 col-md-12">
             <div className="row">
@@ -45,8 +45,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <a className="btn btn-lg btn-primary btn-lg-square back-to-top"><i className="fa fa-angle-double-up"></i></a>
-        </div>
-    )
+    </div>
+  )
 }
 export default Footer;

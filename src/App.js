@@ -13,8 +13,10 @@ import './App.css';
 import { Route, Routes, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { Toggle } from './component/Toggle';
+import Dashboard from './page/Dashboard';
 function App() {
   const [isDark, setIsDark] = useState(true)
+  const top = () => { window.scrollTo(0,0)};
   return (
     <div className='App' data-theme={isDark ? "dark" : "light"}>
       <Toggle isChecked={isDark} handleChange={() => setIsDark(!isDark)} />
@@ -30,9 +32,10 @@ function App() {
         <Route path='/AWS' element={<AWS />} />
         <Route path='/UNGTUYEN' element={<DK />} />
         <Route path='/*' element={<Errorpage />} />
+        <Route path='/DASHBOARD' element={<Dashboard />} />
       </Routes>
       <Footer/>
-      
+      <a className="btn btn-lg btn-primary btn-lg-square back-to-top" onClick={top}><i className="fa fa-angle-double-up"></i></a>
     </div>
   );
 }
