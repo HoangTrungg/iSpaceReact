@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/iSpaceReact/static/css/main.34840816.css",
-    "main.js": "/iSpaceReact/static/js/main.500aec16.js",
+    "main.js": "/iSpaceReact/static/js/main.86126132.js",
     "static/js/453.156d2b79.chunk.js": "/iSpaceReact/static/js/453.156d2b79.chunk.js",
     "index.html": "/iSpaceReact/index.html",
     "main.34840816.css.map": "/iSpaceReact/static/css/main.34840816.css.map",
-    "main.500aec16.js.map": "/iSpaceReact/static/js/main.500aec16.js.map",
+    "main.86126132.js.map": "/iSpaceReact/static/js/main.86126132.js.map",
     "453.156d2b79.chunk.js.map": "/iSpaceReact/static/js/453.156d2b79.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.34840816.css",
-    "static/js/main.500aec16.js"
+    "static/js/main.86126132.js"
   ]
 }
